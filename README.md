@@ -19,8 +19,11 @@ $ cat /etc/services | grep http
 $ cat /etc/services | grep ssh
 
 
+
 # OPÇÔES:
 $ nmap -h
+
+
 
 # HOST DISCOVERY:
 $ ip -br a
@@ -40,6 +43,7 @@ $ cat hosts.txt | grep "Host" | cut -d " " -f2 > alvos.txt
 $ cat alvos.txt
 
 
+
 # Forçar a varredura sem fazer o ping
 
 $ nmap 192.168.90.151
@@ -47,7 +51,8 @@ $ nmap 192.168.90.151
 $ nmap 192.168.90.151 -Pn
 
 
-SCAN TECHNIQUES:
+
+# SCAN TECHNIQUES:
 
 $ nmap -sS 192.168.90.9
 
@@ -60,7 +65,8 @@ $ nmap -sU 192.168.90.9 --top-ports=10
 $ nmap -sU 192.168.90.9 --top-ports=10 --open
 
 
-PORT SPECIFICATION AND SCAN ORDER:
+
+# PORT SPECIFICATION AND SCAN ORDER:
 
 $ nmap 192.168.90.9 -p21 
 
@@ -73,7 +79,8 @@ $ nmap 192.168.90.9 -r
 $ nmap 192.168.90.9 --top-ports=100
 
 
-SERVICE/VERSION DETECTION:
+
+# SERVICE/VERSION DETECTION:
 
 $ nmap 192.168.90.9 -p21 -sV
 
@@ -83,7 +90,7 @@ $ nmap 192.168.90.9 -O
 
 
 
-SCAN BÁSICO
+# SCAN BÁSICO
 
 $ nmap 192.168.90.9 -v
 
@@ -113,7 +120,7 @@ $ nmap 192.168.90.9 --traceroute
 
 
 
-TÉCNICAS DE EVASÃO
+# TÉCNICAS DE EVASÃO
 
 $ nmap -f 192.168.90.9
 
@@ -129,7 +136,7 @@ $ nmap 192.168.90.9 -g53,80,443
 
 
 
-SCRIPTS: Localização / Help
+# SCRIPTS: Localização / Help
 
 $ ls /usr/share/nmap/scripts/
 
@@ -137,11 +144,17 @@ $ ls /usr/share/nmap/scripts/smb*
 
 $ ls /usr/share/nmap/scripts/ftp*
 
-$ grep exploit /usr/share/nmap/scripts/*
+$ grep categories /usr/share/nmap/scripts/* | grep exploit
+
+(vuln, auth, brute, default, discovery, malware, safe, version)
+
+
 
 $ nmap --script-help=ftp-anon
 
 
+
+# CATEGORIAS DE SCRIPTS
 
 $ nmap 192.168.90.9 -sV -v -p- --script=vuln
 
@@ -163,6 +176,7 @@ $ nmap 192.168.90.9 -sV -v -p- --script=version
 
 
 
+# EXECUÇÃO DE SCRIPTS INDIVIDUALIZADOS
 
 $ nmap 192.168.90.9 -sV -v -p2121 --script=ftp-brute 
 
